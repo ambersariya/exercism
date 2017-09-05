@@ -5,27 +5,36 @@ class Bob {
     
     public static func hey (_ input: String) -> String {
         
-        let inputString = input.trimmingCharacters(in: .whitespacesAndNewlines)
-            .replacingOccurrences(of: "[0-9]", with: "", options: .regularExpression, range: nil)
-
         // string characteristics
-        let isUppercased = inputString.uppercased() == inputString
-        
-        let endWithDot = inputString.hasSuffix(".")
-        let isQuestion = inputString.hasSuffix("?")
-
-        if inputString.isEmpty {
+        if input.isEmpty() {
             return "Fine. Be that way!"
         }
         
-        if isQuestion {
+        if input.isCapatilized() {
+            return "Whoa, chill out!"
+        }
+        
+        if input.isQuestion() {
             return "Sure."
         }
         
-        if isUppercased && !endWithDot {
-            return "Whoa, chill out!"
-        }
-
         return "Whatever."
+    }
+}
+
+extension String {
+    
+    func isCapatilized() -> Bool {
+        let letters = CharacterSet(charactersIn: self).intersection(.letters)
+        return !letters.isEmpty && letters.isSubset(of: .uppercaseLetters)
+    }
+    
+    func isQuestion() -> Bool {
+        return self.hasSuffix("?")
+    }
+    
+    func isEmpty() -> Bool {
+        let trimmedString = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmedString.isEmpty
     }
 }
