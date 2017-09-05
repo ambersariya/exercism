@@ -2,6 +2,8 @@
 import Foundation
 
 class SpaceAge {
+    
+    let earthYearInDays: Double = 365.26
     var seconds: Int = 0
     
     var ageInDays: Double {
@@ -18,7 +20,7 @@ class SpaceAge {
     }
     
     var onEarth: Double {
-        return Double(String(format: "%.2f", ageInDays / 365.26))!
+        return Double(String(format: "%.2f", ageInDays / earthYearInDays))!
     }
 
     var onMars: Double {
@@ -26,19 +28,19 @@ class SpaceAge {
     }
     
     var onJupiter: Double {
-        return Double(String(format: "%.2f", ageInDays / (11.862615 * 365.26)))!
+        return Double(String(format: "%.2f", ageInDays / (11.862615 * earthYearInDays)))!
     }
     
     var onSaturn: Double {
-        return Double(String(format: "%.2f", ageInDays / (29.447498 * 365.26)))!
+        return Double(String(format: "%.2f", ageInDays / (29.447498 * earthYearInDays)))!
     }
     
     var onUranus: Double {
-        return Double(String(format: "%.2f", ageInDays / (84.016846 * 365.26)))!
+        return Double(String(format: "%.2f", ageInDays / (84.016846 * earthYearInDays)))!
     }
     
     var onNeptune: Double {
-        return Double(String(format: "%.2f", ageInDays / (164.79132 * 365.26)))!
+        return Double(String(format: "%.2f", ageInDays / (164.79132 * earthYearInDays)))!
     }
     
     public init(_ ageInSeconds: Int) {
